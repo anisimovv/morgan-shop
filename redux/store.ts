@@ -1,23 +1,24 @@
+import { globalReducer } from "./reducers/global";
+import { dataReducer } from "./reducers/data";
+import { combineReducers } from "redux";
+
 import { useMemo } from "react";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import thunkMiddleware from "redux-thunk";
 
 let store;
 
-const initialState = {};
+const rootReducer = combineReducers({
+  data: dataReducer,
+  global: globalReducer,
+});
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
-function initStore(preloadedState = initialState) {
+function initStore(initialState) {
   return createStore(
-    reducer,
-    preloadedState,
-    composeWithDevTools(applyMiddleware())
+    rootReducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(thunkMiddleware))
   );
 }
 

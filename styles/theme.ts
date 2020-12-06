@@ -1,8 +1,21 @@
 import { DefaultTheme } from "styled-components";
 
+const COLORS = {
+  black: "#121212",
+  white: "#FAFAFA",
+  lightGrey: "#F0F0F0",
+  grey: "#DBDBDB",
+  darkGrey: "#6D6D6D",
+  red: "#D92222",
+};
+
 export const theme: DefaultTheme = {
-  colors: {
-    primary: "#0070f3",
-    secondary: "red",
+  palette: {
+    primary: COLORS.black,
+    background: COLORS.white,
+    error: COLORS.red,
+    lightGrey: COLORS.lightGrey,
+    grey: COLORS.grey,
+    darkGrey: COLORS.darkGrey,
   },
 };
